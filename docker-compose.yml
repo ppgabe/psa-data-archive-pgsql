@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:18.3-alpine3.23
+    restart: always
+    shm_size: 1024MB
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql
+      - ./db/psgc_data:/var/lib/postgresql/psgc_data
+      - ./db/vsr_data:/var/lib/postgresql/vsr_data
+    secrets:
+      - db_password
+    environment:
+      - POSTGRES_DB=psada_postgres
+      - POSTGRES_USER=deserving0397
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+
+  flyway:
+    image: flyway/flyway
+    environment:
+      - FLYWAY_URL=jdbc:postgresql://db:5432/psada_postgres
+      - FLYWAY_USER=deserving0397
+      - FLYWAY_LOCATIONS=filesystem:/flyway/migrations
+      - FLYWAY_CONNECT_RETRIES=5
+    entrypoint: >
+      /bin/sh -c 'FLYWAY_PASSWORD=$(cat /run/secrets/db_password) flyway migrate -X -outputFile=/flyway/reports/most-recent-run.txt -reportEnabled=true -reportFilename=/flyway/reports/migration-report.html'
+    volumes:
+      - ./db/migration:/flyway/migrations
+      - ./db/reports:/flyway/reports
+    secrets:
+      - db_password
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+
+secrets:
+  db_password:
+    file: ./db/password
