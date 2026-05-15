@@ -171,20 +171,22 @@ create index idx_temp_res on temp_death_raw_data (residence_region_new, residenc
 create table vsr_deaths
 (
     id                        int generated always as identity primary key,
-    month_of_death            int         not null,
-    day_of_death              int         not null,
-    year_of_death             int         not null,
-    municipality_of_death_id  int         not null,
-    sex                       int         not null,
-    age                       int         not null,
-    residence_municipality_id int         not null,
-    civil_status              int         not null,
-    citizenship               int         not null,
-    place_type                int         not null,
-    attendant                 int         not null,
-    registration_status       int         not null,
-    icd10_code                varchar(8)  not null,
-    tablist                   varchar(16) not null
+    month_of_death            int        not null,
+    day_of_death              int        not null,
+    year_of_death             int        not null,
+    municipality_of_death_id  int        not null,
+    sex                       int        not null,
+    age                       int        not null,
+    age_years                 int,
+    infant_age_months         int,
+    residence_municipality_id int        not null,
+    civil_status              int        not null,
+    citizenship               int        not null,
+    place_type                int        not null,
+    attendant                 int        not null,
+    registration_status       int        not null,
+    icd10_code                varchar(8) not null,
+    tablist                   varchar(16)
 );
 
 with psgc_table as ( select pr.code reg_code, pp.code as prov_code, pm.code as mun_code, pm.id as mun_id
@@ -192,8 +194,9 @@ with psgc_table as ( select pr.code reg_code, pp.code as prov_code, pm.code as m
                               join psgc_provinces pp on pm.province_id = pp.id
                               join psgc_regions pr on pp.region_code = pr.code )
 insert
-into vsr_deaths ( month_of_death, day_of_death, year_of_death, municipality_of_death_id, sex, age
-                , residence_municipality_id, civil_status, citizenship, place_type, attendant, registration_status
+into vsr_deaths ( month_of_death, day_of_death, year_of_death, municipality_of_death_id, sex, age, age_years
+                , infant_age_months, residence_municipality_id, civil_status, citizenship, place_type, attendant
+                , registration_status
                 , icd10_code, tablist)
 select month_of_death
      , day_of_death
@@ -201,6 +204,11 @@ select month_of_death
      , pod.mun_id
      , sex
      , age
+     , case when tdrd.age between 201 and 299 then tdrd.age - 200
+            when tdrd.age >= 300 and tdrd.age < 999 then tdrd.age - 300
+            when tdrd.age between 0 and 111 then 0 end
+     , case when tdrd.age between 0 and 30 then tdrd.age
+            when tdrd.age between 101 and 111 then (tdrd.age - 100) * 30 end
      , res.mun_id
      , civil_status
      , citizenship
