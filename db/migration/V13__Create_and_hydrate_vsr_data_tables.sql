@@ -174,15 +174,15 @@ create table vsr_deaths
     month_of_death            int        not null,
     day_of_death              int        not null,
     year_of_death             int        not null,
-    municipality_of_death_id  int        not null,
+    municipality_of_death_id  int,
     sex                       int        not null,
     age                       int        not null,
     age_years                 int,
-    infant_age_months         int,
-    residence_municipality_id int        not null,
-    civil_status              int        not null,
-    citizenship               int        not null,
-    place_type                int        not null,
+    infant_age_days           int,
+    residence_municipality_id int,
+    civil_status              int,
+    citizenship               int,
+    place_type                int,
     attendant                 int        not null,
     registration_status       int        not null,
     icd10_code                varchar(8) not null,
@@ -195,7 +195,7 @@ with psgc_table as ( select pr.code reg_code, pp.code as prov_code, pm.code as m
                               join psgc_regions pr on pp.region_code = pr.code )
 insert
 into vsr_deaths ( month_of_death, day_of_death, year_of_death, municipality_of_death_id, sex, age, age_years
-                , infant_age_months, residence_municipality_id, civil_status, citizenship, place_type, attendant
+                , infant_age_days, residence_municipality_id, civil_status, citizenship, place_type, attendant
                 , registration_status
                 , icd10_code, tablist)
 select month_of_death
@@ -218,10 +218,10 @@ select month_of_death
      , icd_code_3d
      , tablist
 from temp_death_raw_data as tdrd
-         join psgc_table pod
+         left join psgc_table pod
               on tdrd.place_of_death_region_new = pod.reg_code and tdrd.place_of_death_province_new = pod.prov_code and
                  tdrd.place_of_death_mun_new = pod.mun_code
-         join psgc_table res
+         left join psgc_table res
               on tdrd.residence_region_new = res.reg_code and tdrd.residence_province_new = res.prov_code and
                  tdrd.residence_mun_new = res.mun_code;
 
@@ -236,3 +236,7 @@ alter table vsr_deaths
     add constraint fk_vsr_deaths_icd10_code foreign key (icd10_code) references vsr_icd10_codes (code),
     add constraint fk_vsr_deaths_tablist foreign key (tablist) references vsr_tablist (code),
     add constraint fk_vsr_deaths_sex foreign key (sex) references vsr_sex (code);
+
+create index idx_vsr_deaths_date_of_death on vsr_deaths (year_of_death, month_of_death, day_of_death);
+create index idx_vsr_deaths_sex on vsr_deaths (sex);
+create index idx_vsr_deaths_icd10_code on vsr_deaths (icd10_code);

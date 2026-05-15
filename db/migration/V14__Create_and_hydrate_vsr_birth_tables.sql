@@ -84,8 +84,8 @@ create index idx_temp_vsr_births_ingest_mothers_residence on temp_vsr_births_ing
 create table vsr_births
 (
     id                      int generated always as identity primary key,
-    birth_place_mun_id      int not null,
-    mother_residence_mun_id int not null,
+    birth_place_mun_id      int,
+    mother_residence_mun_id int,
     sex                     int not null,
     date_birth_day          int not null,
     date_birth_month        int not null,
@@ -130,10 +130,10 @@ select ptb.mun_id
      , legitimacy_status
      , registration_status
 from temp_vsr_births_ingest as tvbi
-         join psgc_table ptb
+         left join psgc_table ptb
               on tvbi.new_birth_place_region = ptb.reg_code and tvbi.new_birth_place_province = ptb.prov_code and
                  tvbi.new_birth_place_mun = ptb.mun_code
-         join psgc_table ptm on tvbi.new_mother_residence_region = ptm.reg_code and
+         left join psgc_table ptm on tvbi.new_mother_residence_region = ptm.reg_code and
                                 tvbi.new_mother_residence_province = ptm.prov_code and
                                 tvbi.new_mother_residence_mun = ptm.mun_code;
 
