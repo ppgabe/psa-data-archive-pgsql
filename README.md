@@ -84,7 +84,16 @@ Move all the CSVs you have saved into `PROJECT_DIR/db/vsr_data/`. It should look
 
 ![vsr_data folder after all CSVs have been moved](/readme/vsr-data-folder.png)
 
-### 6. Create a Database `password` File
+### 6. Remove empty rows in the CSVs
+
+It is recommended that you check the CSVs and remove any empty rows (excluding the whitespace found on the last line of the CSVs)
+to prevent issues during import.
+
+![An empty row within a CSV](/readme/csv-empty-row.png)
+
+The image above shows an example of an empty row. You must remove instances of empty rows like this.
+
+### 7. Create a Database `password` File
 
 Inside `db/`, create a file named `password` (without any file extensions) and open it with your preferred
 text editor. Inside the file, create a secure password. This will be the password you use to connect to your
@@ -93,7 +102,7 @@ database initially!
 You may check and modify your database username inside the `docker-compose.yml` file. Be sure to edit this before
 proceeding to the next step!
 
-### 7. Start the Database
+### 8. Start the Database
 
 On your terminal, `cd` into the project root directory and run the command `docker compose up`. If you follow
 everything closely, the migrations will be completed successfully, and you will have a working database!
