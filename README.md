@@ -7,7 +7,7 @@ publications and the PSADA website.
 As of May 15, 2026, it encompasses the following:
 
 1. Philippine Standard Geographic Code (PSGC)
-2. Vital Statistics Reports (VSRs) on Deaths in the Philippines (2004-2024)
+2. Vital Statistics Reports (VSRs) on Deaths in the Philippines (2006-2024)
 3. Vital Statistics Report on Births in the Philippines (2024)
 
 ## Disclaimer
