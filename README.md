@@ -22,6 +22,11 @@ accordance with its Terms and Conditions. As such, you are expected to get your 
 You are expected to follow the setup guide which will lay out basic steps to prepare the datafiles for use with this
 repository.
 
+## Attribution
+
+The PSGC datafile (`PSGC-1Q-2026-Publication-Datafile.csv`) included in this repository was published on April 13, 2026,
+and obtained from [https://psa.gov.ph/classification/psgc](https://psa.gov.ph/classification/psgc).
+
 ## Prerequisites
 
 1. Docker
@@ -110,3 +115,19 @@ everything closely, the migrations will be completed successfully, and you will 
 You can connect to this local database through `localhost:5432` using the username and password you provided.
 
 This README will not cover how to connect the database to your preferred programming environment.
+
+## License
+
+Copyright 2026 Gabriel Virrey
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
