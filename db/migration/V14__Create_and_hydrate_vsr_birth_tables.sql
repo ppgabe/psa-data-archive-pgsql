@@ -71,8 +71,8 @@ create temp table temp_vsr_births_ingest
     registration_status           int
 );
 
-copy temp_vsr_births_ingest from '/var/lib/postgresql/vsr_data/VSR-Births-Male.csv' (format csv, header);
-copy temp_vsr_births_ingest from '/var/lib/postgresql/vsr_data/VSR-Births-Female.csv' (format csv, header);
+copy temp_vsr_births_ingest from '/var/lib/postgresql/vsr_data/VSR-Births-2024-Male.csv' with (format csv, header);
+copy temp_vsr_births_ingest from '/var/lib/postgresql/vsr_data/VSR-Births-2024-Female.csv' with (format csv, header);
 
 analyze temp_vsr_births_ingest;
 

@@ -159,7 +159,7 @@ create temp table temp_death_raw_data
     tablist                     varchar(16)
 );
 
-copy temp_death_raw_data from '/var/lib/postgresql/vsr_data/VSR-Death-Data.csv' with (format csv, header);
+copy temp_death_raw_data from '/var/lib/postgresql/vsr_data/VSR-PUF-2024-Death.csv' with (format csv, header);
 
 analyze temp_death_raw_data;
 

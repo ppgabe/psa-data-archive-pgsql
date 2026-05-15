@@ -51,7 +51,7 @@ create temp table temp_vsr_death_2023_ingest
     tablist                     varchar(16)
 );
 
-copy temp_vsr_death_2023_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2023-Death.csv' (format csv, header);
+copy temp_vsr_death_2023_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2023-Death.csv' with (format csv, header);
 
 analyze temp_vsr_death_2023_ingest;
 create index idx_temp_vsr_death_2023_ingest_place on temp_vsr_death_2023_ingest (place_of_death_region_new,
@@ -114,16 +114,16 @@ create temp table temp_vsr_death_ingest
     registration_status     int
 );
 
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2022-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2021-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2020-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2019-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2018-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2017-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2016-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2015-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2014-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2013-Death.csv' (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2022-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2021-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2020-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2019-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2018-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2017-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2016-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2015-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2014-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest from '/var/lib/postgresql/vsr_data/VSR-PUF-2013-Death.csv' with (format csv, header);
 
 analyze temp_vsr_death_ingest;
 create index idx_temp_vsr_death_ingest_place on temp_vsr_death_ingest (place_of_death_region, place_of_death_province, place_of_death_mun);
@@ -173,13 +173,13 @@ create temp table temp_vsr_death_ingest_pre2013
     registration_status     int
 );
 
-copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2012-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2011-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2010-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2009-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2008-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2007-Death.csv' (format csv, header);
-copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2006-Death.csv' (format csv, header);
+copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2012-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2011-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2010-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2009-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2008-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2007-Death.csv' with (format csv, header);
+copy temp_vsr_death_ingest_pre2013 from '/var/lib/postgresql/vsr_data/VSR-PUF-2006-Death.csv' with (format csv, header);
 
 analyze temp_vsr_death_ingest_pre2013;
 create index idx_temp_vsr_death_ingest_pre2013_place on temp_vsr_death_ingest_pre2013 (place_of_death_region, place_of_death_province, place_of_death_mun);
