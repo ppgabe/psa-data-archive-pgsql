@@ -62,7 +62,7 @@ Open the datafile in Microsoft Excel (or a similar program) and go to `File > Sa
 **CSV (UTF-8)** with the following filename format:
 
 1. For VSR on Deaths: `VSR-PUF-[YYYY]-Death`
-2. For VSR on Births: 'VSR-Births-[YYYY]-[Male/Female]'
+2. For VSR on Births: `VSR-Births-[YYYY]-[Male/Female]`
 
 Keep in mind that for Excel workbooks with multiple sheets, such as the one found in VSRs on Births, you must
 save once for each sheet. This is why VSR on Births has a `[Male/Female]` suffix, as you must have two separate
@@ -91,7 +91,8 @@ Move all the CSVs you have saved into `PROJECT_DIR/db/vsr_data/`. It should look
 
 ### 6. Remove empty rows in the CSVs
 
-It is recommended that you check the CSVs and remove any empty rows (excluding the whitespace found on the last line of the CSVs)
+It is recommended that you check the CSVs and remove any empty rows (excluding the whitespace found on the last line of
+the CSVs)
 to prevent issues during import.
 
 ![An empty row within a CSV](/readme/csv-empty-row.png)
