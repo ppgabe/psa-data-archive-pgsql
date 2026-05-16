@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$PROJECT_DIR$/db/migration/V16__Import_historical_VSR_data.sql" value="7c38db0f-0856-48cf-b921-ef695a9fb42c" />
+    <file url="file://$PROJECT_DIR$/db/migration/V1__Create_PSGC_and_Geocodes_landing_tables.sql" value="7c38db0f-0856-48cf-b921-ef695a9fb42c" />
+    <file url="file://$PROJECT_DIR$/db/migration/V2__Reconcile_Geocodes_and_PSGC.sql" value="7c38db0f-0856-48cf-b921-ef695a9fb42c" />
+    <file url="file://$PROJECT_DIR$/db/migration/V4__Insert_records_to_staging_vsr_deaths.sql" value="7c38db0f-0856-48cf-b921-ef695a9fb42c" />
+    <file url="file://$PROJECT_DIR$/db/migration/V5__Create_final_vsr_deaths_table_and_view.sql" value="7c38db0f-0856-48cf-b921-ef695a9fb42c" />
   </component>
 </project>
