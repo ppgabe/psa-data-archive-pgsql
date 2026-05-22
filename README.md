@@ -74,7 +74,7 @@ CSVs for this VSR.
 
 Repeat the same process from the previous step, but this time, for the following files and their listed sheets:
 
-1. `vsr_2024_death_metadata(dictionary).xlsx`: ICD_codes3, tabulation list
+1. `vsr_2024_death_metadata(dictionary).xlsx`: ICD_codes3, tabulation list, geocodes, geocodes_new
 2. `vsr_2023_death_metadata(dictionary).xlsx`: citizenship
 
 Their filenames must be:
@@ -82,6 +82,8 @@ Their filenames must be:
 1. **ICD_codes3**: `VSR-ICD10.csv`
 2. **tabulation list**: `VSR-Tablist.csv`
 3. **citizenship**: `VSR-Citizenship.csv`
+4. **geocodes**: `VSR-Geocodes.csv`
+5. **geocodes_new**: `VSR-Geocodes-New.csv`
 
 ### 5. Move all the CSVs into `/db/vsr_data`
 
